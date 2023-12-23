@@ -5,6 +5,10 @@
   "repository": "https://github.com/kpriyanshu2003/social-media-redirect.git",
   "author": "kpriyanshu2003 <az.priyanshu.rockstar@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.ts"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -17,6 +21,7 @@
     "@types/express": "^4.17.21",
     "@types/morgan": "^1.9.9",
     "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }
