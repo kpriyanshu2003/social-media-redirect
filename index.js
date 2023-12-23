@@ -27,7 +27,7 @@ const cacheTTL = 24 * 60 * 60 * 15; // cache expires every 15 days
 const cache = new node_cache_1.default({ stdTTL: cacheTTL });
 const fetchAndCacheData = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield fetch("https://api.npoint.io/a7e72efdfccea4a55af0");
+        const response = yield fetch(process.env.JSON_URL);
         const data = yield response.json();
         cache.set("apiData", data, cacheTTL);
         console.log("Data fetched from API and cached");
@@ -38,7 +38,7 @@ const fetchAndCacheData = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const refreshInterval = 60 * 60 * 1000 * 24 * 15; // refresh interval is 15 days
 setInterval(fetchAndCacheData, refreshInterval);
-// fetchAndCacheData();
+fetchAndCacheData();
 app.get("/", (req, res) => {
     res.json("Hello World!");
 });

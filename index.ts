@@ -21,7 +21,7 @@ type apiData = {
 
 const fetchAndCacheData = async () => {
   try {
-    const response = await fetch("https://api.npoint.io/a7e72efdfccea4a55af0");
+    const response = await fetch(process.env.JSON_URL as string);
     const data = await response.json();
     cache.set("apiData", data, cacheTTL);
     console.log("Data fetched from API and cached");
@@ -32,7 +32,7 @@ const fetchAndCacheData = async () => {
 const refreshInterval = 60 * 60 * 1000 * 24 * 15; // refresh interval is 15 days
 setInterval(fetchAndCacheData, refreshInterval);
 
-// fetchAndCacheData();
+fetchAndCacheData();
 
 app.get("/", (req: Request, res: Response) => {
   res.json("Hello World!");
